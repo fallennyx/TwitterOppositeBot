@@ -55,6 +55,3 @@ uritemplate==4.1.1
 urllib3==2.2.2
 wcwidth==0.2.13
 prompt_toolkit==3.0.47
-pyasn1_modules==0.4.0
-pydantic_core==2.18.4
-typing_extensions==4.12.2true
