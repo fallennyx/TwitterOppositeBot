@@ -19,12 +19,19 @@ client.login(
 )
 
 def posttweet(text):
+    USERNAME = os.getenv('USERNAME')
+    EMAIL = os.getenv('EMAIL')
+    PASSWORD = os.getenv('PASSWORD')
+    client = Client('en-US')
+    client.login(
+    auth_info_1=USERNAME,
+    auth_info_2=EMAIL,
+    password=PASSWORD
+    )
     tweet=client.create_tweet(
         text=text,
     )
     return tweet
-
-tweets = client.search_tweet('python', 'Latest')
 
 
 def searchtweets(query,product):
@@ -32,6 +39,15 @@ def searchtweets(query,product):
     return tweets[0].text
 
 def tweetlookup(user,type):
+    USERNAME = os.getenv('USERNAME')
+    EMAIL = os.getenv('EMAIL')
+    PASSWORD = os.getenv('PASSWORD')
+    client = Client('en-US')
+    client.login(
+    auth_info_1=USERNAME,
+    auth_info_2=EMAIL,
+    password=PASSWORD
+    )
     user = client.get_user_by_screen_name(user)
     user=user.id
     tweets = client.get_user_tweets(user, type)

@@ -18,7 +18,8 @@ def to_markdown(text):
 GOOGLE_API_KEY=os.getenv('GOOGLE_API_KEY')
 model = genai.GenerativeModel('gemini-1.5-flash')
 def googlegemini(string):
+    GOOGLE_API_KEY=os.getenv('GOOGLE_API_KEY')
+    model = genai.GenerativeModel('gemini-1.5-flash')
     response = model.generate_content(string)
-    return response
-
+    return response.text
 
