@@ -53,4 +53,3 @@ def tweetlookup(user,type):
     tweets = client.get_user_tweets(user, type)
     return tweets[0].text
 
-print(tweetlookup("RealCandaceO","Tweets"))
