@@ -20,7 +20,7 @@ def automated():
     usernames_cycle = itertools.cycle(usernames)
     username=next(usernames_cycle)
     tweet=twitter.tweetlookup(username,"Tweets")
-    oppositeTweet=backend.googlegemini("Write the exact opposite of this tweet while subtly mocking it. Here is the tweet: " + tweet)
+    oppositeTweet=backend.googlegemini("Write a slightly shorter but opposite version of this tweet while subtly mocking it. Here is the tweet: " + tweet)
     twitter.posttweet(oppositeTweet)
 
 
