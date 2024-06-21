@@ -23,13 +23,7 @@ def automated():
     oppositeTweet=backend.googlegemini("Write a slightly shorter but opposite version of this tweet while subtly mocking it. Here is the tweet: " + tweet)
     twitter.posttweet(oppositeTweet)
 
-def run_automated():
-    while True:
-        try:
-            automated()
-        except Exception as e:
-            print(f"An error occurred: {e}")
-        time.sleep(86400)
+
 
 if __name__ == "__main__":
     automated()
