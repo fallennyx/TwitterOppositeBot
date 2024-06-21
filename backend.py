@@ -16,4 +16,3 @@ def googlegemini(string):
     response = model.generate_content(string)
     return response.text
 
-print(googlegemini("Hello, how are you?"))
