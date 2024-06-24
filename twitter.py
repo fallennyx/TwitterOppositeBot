@@ -18,7 +18,7 @@ client.login(
     password=PASSWORD
 )
 
-def posttweet(text):
+def posttweet(text,url):
     USERNAME = os.getenv('USERNAME')
     EMAIL = os.getenv('EMAIL')
     PASSWORD = os.getenv('PASSWORD')
@@ -30,7 +30,9 @@ def posttweet(text):
     )
     tweet=client.create_tweet(
         text=text,
+        attachment_url=url
     )
+    print("Created Tweet")
     return tweet
 
 
@@ -51,5 +53,6 @@ def tweetlookup(user,type):
     user = client.get_user_by_screen_name(user)
     user=user.id
     tweets = client.get_user_tweets(user, type)
-    return tweets[0].text
+    print("Successfully searched")
+    return tweets[0]
 

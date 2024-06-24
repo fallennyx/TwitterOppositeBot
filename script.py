@@ -16,12 +16,18 @@ load_dotenv()
 
 
 def automated():
-    usernames = ["RealCandaceO", "paulg", "naval", "Jason", "nntaleb","AnnCoulter","caitoz","Cernovich","LauraLoomer"]
+    usernames = ["RealCandaceO", "paulg", "naval", "Jason", "nntaleb","AnnCoulter","caitoz","Cernovich","LauraLoomer","tylerdurdy"]
     usernames_cycle = itertools.cycle(usernames)
     username=next(usernames_cycle)
     tweet=twitter.tweetlookup(username,"Tweets")
-    oppositeTweet=backend.googlegemini("Write a slightly shorter but opposite version of this tweet while subtly mocking it. Here is the tweet: " + tweet)
-    twitter.posttweet(oppositeTweet)
+    while tweet is None:
+        username=next(usernames_cycle)
+        tweet=twitter.tweetlookup(username,"Tweets")
+    tweetText=tweet.text
+    oppositeTweet=backend.googlegemini("Write a slightly shorter but opposite version of this tweet while subtly mocking it. Here is the tweet: " + tweetText)
+    url="https://twitter.com/"+username+"/status/"+tweet.id
+    twitter.posttweet(oppositeTweet,url)
+    print("Tweet posted")
 
 
 
