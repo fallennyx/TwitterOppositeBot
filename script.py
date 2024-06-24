@@ -16,7 +16,7 @@ load_dotenv()
 
 
 def automated():
-    usernames = ["RealCandaceO", "paulg", "naval", "Jason", "nntaleb","AnnCoulter","caitoz","Cernovich","LauraLoomer","tylerdurdy"]
+    usernames = ["RealCandaceO", "paulg","tylerdurdy", "naval", "Jason","tylerdurdy", "nntaleb","AnnCoulter","caitoz","Cernovich","LauraLoomer","tylerdurdy"]
     usernames_cycle = itertools.cycle(usernames)
     username=next(usernames_cycle)
     tweet=twitter.tweetlookup(username,"Tweets")
