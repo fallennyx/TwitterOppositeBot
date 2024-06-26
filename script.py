@@ -28,7 +28,10 @@ def automated():
     oppositeTweet=backend.googlegemini("In 230 characters or less,Write a tweet that is shorter but opposite version of this tweet while subtly mocking it. Here is the tweet: " + tweetText)
     while len(oppositeTweet)>250:
         oppositeTweet=backend.googlegemini("In 230 characters or less,Write a tweet that is shorter but opposite version of this tweet while subtly mocking it. Here is the tweet: " + tweetText)
-    url="x.com/"+username+"/status/"+tweet.id
+    url='https://twitter.com/'+username+'/status/'+tweet.id
+    print(tweet.text)
+    print(url)
+    print(oppositeTweet)
     twitter.posttweet(oppositeTweet,url)
     print("Tweet posted")
 
