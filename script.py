@@ -30,10 +30,12 @@ def automated():
         oppositeTweet=backend.googlegemini("In 230 characters or less,Write a tweet that is shorter but opposite version of this tweet while subtly mocking it. Here is the tweet: " + tweetText)
     url='https://twitter.com/'+username+'/status/'+tweet.id
     twitter.posttweet(oppositeTweet,url)
-    time.sleep(10)
-    if  twitter.tweetlookup("OppositeBotNyx","Tweets").quote.id !=tweet.id:
+    time.sleep(20)
+    if twitter.tweetlookup("OppositeBotNyx","Tweets").quote.id is None:
         twitter.deletetweet(twitter.tweetlookup("OppositeBotNyx","Tweets").id)
-        automated()
+        print("Failure,no quote")
+    else:
+        print("Sucess quote")
 
 
 
