@@ -20,12 +20,14 @@ def automated():
     usernames_cycle = itertools.cycle(usernames)
     username=next(usernames_cycle)
     tweet=twitter.tweetlookup(username,"Tweets")
-    while tweet is None:
+    while len(tweet.text)>250:
         username=next(usernames_cycle)
         tweet=twitter.tweetlookup(username,"Tweets")
-    tweetText=tweet.text
-    oppositeTweet=backend.googlegemini("In less than 150 characters or less,Write a tweet that is shorter but opposite version of this tweet while subtly mocking it. Here is the tweet: " + tweetText)
 
+    tweetText=tweet.text
+    oppositeTweet=backend.googlegemini("In 230 characters or less,Write a tweet that is shorter but opposite version of this tweet while subtly mocking it. Here is the tweet: " + tweetText)
+    while len(oppositeTweet)>250:
+        oppositeTweet=backend.googlegemini("In 230 characters or less,Write a tweet that is shorter but opposite version of this tweet while subtly mocking it. Here is the tweet: " + tweetText)
     url="x.com/"+username+"/status/"+tweet.id
     twitter.posttweet(oppositeTweet,url)
     print("Tweet posted")
