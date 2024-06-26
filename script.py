@@ -24,7 +24,8 @@ def automated():
         username=next(usernames_cycle)
         tweet=twitter.tweetlookup(username,"Tweets")
     tweetText=tweet.text
-    oppositeTweet=backend.googlegemini("Write a slightly shorter but opposite version of this tweet while subtly mocking it. Here is the tweet: " + tweetText)
+    oppositeTweet=backend.googlegemini("In less than 150 characters or less,Write a tweet that is shorter but opposite version of this tweet while subtly mocking it. Here is the tweet: " + tweetText)
+
     url="https://twitter.com/"+username+"/status/"+tweet.id
     twitter.posttweet(oppositeTweet,url)
     print("Tweet posted")
