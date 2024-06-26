@@ -16,7 +16,7 @@ load_dotenv()
 
 
 def automated():
-    usernames = ["RealCandaceO", "paulg","tylerdurdy", "naval", "Jason","tylerdurdy", "nntaleb","AnnCoulter","caitoz","Cernovich","LauraLoomer","tylerdurdy"]
+    usernames = ["paulg","tylerdurdy", "tylerdurdy", "naval", "Jason","tylerdurdy", "nntaleb","caitoz","tylerdurdy"]
     usernames_cycle = itertools.cycle(usernames)
     username=next(usernames_cycle)
     tweet=twitter.tweetlookup(username,"Tweets")
@@ -29,11 +29,16 @@ def automated():
     while len(oppositeTweet)>250:
         oppositeTweet=backend.googlegemini("In 230 characters or less,Write a tweet that is shorter but opposite version of this tweet while subtly mocking it. Here is the tweet: " + tweetText)
     url='https://twitter.com/'+username+'/status/'+tweet.id
-    print(tweet.text)
-    print(url)
-    print(oppositeTweet)
     twitter.posttweet(oppositeTweet,url)
-    print("Tweet posted")
+    time.sleep(10)
+    if  twitter.tweetlookup("OppositeBotNyx","Tweets").quote.id !=tweet.id:
+        twitter.deletetweet(twitter.tweetlookup("OppositeBotNyx","Tweets").id)
+        automated()
+
+
+
+
+
 
 
 

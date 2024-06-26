@@ -33,7 +33,7 @@ def posttweet(text,url):
         attachment_url=url
     )
     print("Created Tweet")
-    return tweet
+    return tweet.id
 
 
 def searchtweets(query,product):
@@ -56,3 +56,5 @@ def tweetlookup(user,type):
     print("Successfully searched")
     return tweets[0]
 
+def deletetweet(id):
+    deletetweet(id)
